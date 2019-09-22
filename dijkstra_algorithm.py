@@ -38,12 +38,12 @@ class DijkstraAlgorithm(BaseShortestPath):
             dvp = heappop(pq)
             distance = distance_table[dvp.vertex].distance
             for adjacent_vertex in self.graph.adjacent_vertices(dvp.vertex):
-                total_distance = distance + self.graph.edge_weight(dvp.vertex, adjacent_vertex)
-                distance_from_origin = distance_table[adjacent_vertex].distance
+                new_distance = distance + self.graph.edge_weight(dvp.vertex, adjacent_vertex)
+                current_distance = distance_table[adjacent_vertex].distance
 
-                if distance_from_origin is None or distance_from_origin > total_distance:
-                    distance_table[adjacent_vertex].distance = total_distance
+                if current_distance is None or new_distance < current_distance:
+                    distance_table[adjacent_vertex].distance = new_distance
                     distance_table[adjacent_vertex].preceding_vertex = dvp.vertex
-                    heappush(pq, DistanceVertexPair(total_distance, adjacent_vertex))
+                    heappush(pq, DistanceVertexPair(new_distance, adjacent_vertex))
 
         return distance_table
