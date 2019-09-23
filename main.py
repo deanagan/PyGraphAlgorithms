@@ -89,10 +89,10 @@ if __name__ == "__main__":
     g5.add_edge(6,7)
     g5.add_edge(0,7)
 
-    # da = DijkstraAlgorithm(g5)
-    # da.path(0, 5)
-    # da.path(0, 6)
-    # da.path(7, 4)
+    da = DijkstraAlgorithm(g5)
+    da.path(0, 5)
+    da.path(0, 6)
+    da.path(7, 4)
 
     g6 = AdjacencyMatrixGraph(6, True)
     g6.add_edge(0,1,1)
